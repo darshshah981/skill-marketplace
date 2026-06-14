@@ -18,7 +18,7 @@ export async function main(argv) {
   switch (command) {
     case "scan":
     case "list":
-      printScan(scanWorkspace({ cwd, marketplaceRoot }), { json: options.json });
+      printScan(scanWorkspace({ cwd, marketplaceRoot }), { json: options.json, verbose: options.verbose });
       break;
     case "doctor":
       runDoctor({ cwd, marketplaceRoot, json: options.json });
@@ -69,7 +69,7 @@ async function runInstall(positionals, options, cwd, marketplaceRoot) {
     return;
   }
 
-  printScan(scan);
+  printScan(scan, { verbose: options.verbose });
   console.log("");
   printPlan(plan);
   console.log("");
@@ -92,7 +92,7 @@ async function runInstall(positionals, options, cwd, marketplaceRoot) {
 
 async function runUpdate(options, marketplaceRoot) {
   const scan = scanWorkspace({ cwd: process.cwd(), marketplaceRoot });
-  printScan(scan, { json: options.json });
+  printScan(scan, { json: options.json, verbose: options.verbose });
   if (options.json) return;
 
   if (!options.yes && !options.force) {
@@ -165,7 +165,7 @@ function runDoctor({ cwd, marketplaceRoot, json }) {
     return;
   }
 
-  printScan(scan);
+  printScan(scan, { verbose: options.verbose });
   console.log("");
   if (!issues.length) {
     console.log("Doctor found no skill issues.");
@@ -217,7 +217,7 @@ function parseArgs(argv) {
 
     const [rawKey, inlineValue] = token.slice(2).split("=");
     const key = rawKey.replace(/-([a-z])/g, (_, char) => char.toUpperCase());
-    if (["json", "yes", "force"].includes(key)) {
+    if (["json", "yes", "force", "verbose"].includes(key)) {
       options[key] = true;
     } else {
       options[key] = inlineValue ?? rest[++index];
@@ -231,8 +231,8 @@ function printHelp() {
   console.log(`skills - personal skill marketplace installer
 
 Usage:
-  skills scan [--json] [--cwd <path>] [--marketplace <path>]
-  skills list [--json]
+  skills scan [--json] [--verbose] [--cwd <path>] [--marketplace <path>]
+  skills list [--json] [--verbose]
   skills doctor [--json]
   skills plan <skill> [--scope project|global] [--agent codex|claude|both] [--json]
   skills install <skill> [--scope project|global] [--agent codex|claude|both] [--yes] [--force]

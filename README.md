@@ -95,6 +95,7 @@ if symlinks are unavailable.
 
 - `skills scan` - recursively discover project, marketplace, and global skills
 - `skills list` - alias for `scan`
+- `skills scan --verbose` - show full paths, overrides, and every discovered skill
 - `skills doctor` - show validation issues
 - `skills plan <skill>` - show install destinations and conflicts
 - `skills install <skill>` - scan, validate, plan, confirm, then install
