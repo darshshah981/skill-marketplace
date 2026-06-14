@@ -1,10 +1,11 @@
 {
-  "name": "@darshshah/skill-marketplace",
-  "version": "0.1.0",
+  "name": "darsh-skill-marketplace",
+  "version": "0.1.1",
   "description": "Personal skill marketplace installer for Codex and Claude Code.",
   "type": "module",
   "bin": {
-    "skills": "./bin/skills.js"
+    "skills": "bin/skills.js",
+    "darsh-skill-marketplace": "bin/skills.js"
   },
   "scripts": {
     "scan": "node ./bin/skills.js scan",

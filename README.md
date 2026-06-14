@@ -16,7 +16,16 @@ skills.
 
 ## CLI
 
-Run from the marketplace checkout:
+Run with npm:
+
+```bash
+npx darsh-skill-marketplace scan
+npx darsh-skill-marketplace doctor
+npx darsh-skill-marketplace plan idea-intake --scope project --agent both
+npx darsh-skill-marketplace install idea-intake --scope project --agent both
+```
+
+Or run from the marketplace checkout:
 
 ```bash
 node ./bin/skills.js scan
@@ -25,7 +34,7 @@ node ./bin/skills.js plan idea-intake --scope project --agent both
 node ./bin/skills.js install idea-intake --scope project --agent both
 ```
 
-After packaging or linking the repo, the same commands become:
+After installing or linking the package, the same commands become:
 
 ```bash
 skills scan
