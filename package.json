@@ -1,0 +1,17 @@
+{
+  "name": "@darshshah/skill-marketplace",
+  "version": "0.1.0",
+  "description": "Personal skill marketplace installer for Codex and Claude Code.",
+  "type": "module",
+  "bin": {
+    "skills": "./bin/skills.js"
+  },
+  "scripts": {
+    "scan": "node ./bin/skills.js scan",
+    "doctor": "node ./bin/skills.js doctor"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT"
+}
